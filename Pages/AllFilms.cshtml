@@ -1,0 +1,36 @@
+﻿@page
+@model MongoDBApp.Pages.AllFilmsModel
+@{
+    <div class="container">
+        <div class="box">
+            @foreach (var product in Model.films)
+            {
+                <table class="product">
+                    <tr>
+                        <td>
+                            <h3>@product.Title</h3>
+                            <p>Text: @product.Description</p>
+                            <p>View: @product.review</p>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="Delete" asp-route-id="@product.Id">
+                                <button type="submit" class="btn btn-danger">Remove</button>
+                            </form>
+                        </td>
+                        <td>
+                            <form method="post" asp-page-handler="Change" asp-route-id="@product.Id">
+                                <button type="submit" class="btn btn-success">View</button>
+                            </form>
+                                <a asp-page="/Edit" asp-route-id="@product.Id" class="text-right">
+                                    <button type="button" class="btn btn-outline-danger">Edit</button>
+                                </a>
+                            
+                        </td>
+                    </tr>
+                </table>
+
+
+            }
+        </div>
+    </div>
+}

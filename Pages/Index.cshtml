@@ -1,0 +1,18 @@
+﻿@page
+@model MongoDBApp.Pages.IndexModel
+
+<form method="post">
+    <div class="form-group">
+        <label asp-for="film.Title"></label>
+        <input asp-for="film.Title" class="form-control" />
+        <span asp-validation-for="film.Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="film.Description"></label>
+        <input asp-for="film.Description" class="form-control" />
+        <span asp-validation-for="film.Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Add Film</button>
+</form>
