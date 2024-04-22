@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDBApp.Items;
+using MongoDBApp.Domain.Entities;
 
 namespace MongoDBApp.Pages
 {

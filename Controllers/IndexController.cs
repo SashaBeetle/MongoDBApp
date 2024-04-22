@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
-using MongoDBApp.Items;
+using MongoDBApp.Domain.Entities;
 using System.Threading.Tasks;
 
 [Route("api/[controller]")]

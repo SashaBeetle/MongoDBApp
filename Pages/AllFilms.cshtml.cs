@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MongoDB.Bson;
 using MongoDB.Driver;
-using MongoDBApp.Items;
+using MongoDBApp.Domain.Entities;
 
 namespace MongoDBApp.Pages
 {
@@ -42,23 +42,18 @@ namespace MongoDBApp.Pages
         public async Task<IActionResult> OnPostChange(int id)
         {
 
-            // Створіть з'єднання з колекцією MongoDB
             var collection = _database.GetCollection<Film>("Films"); 
 
-            // Створіть фільтр для знаходження об'єкта за id
             var filter = Builders<Film>.Filter.Eq("_id", id);
 
             var currentFilm = await collection.Find(filter).FirstOrDefaultAsync();
 
             bool currentValue = currentFilm.review; 
 
-            // Інвертувати значення булевого поля
             bool invertedValue = !currentValue;
 
-            // Створіть оновлення для зміни значення булевого поля на invertedValue
             var update = Builders<Film>.Update.Set("review", invertedValue);
 
-            // Виконайте оновлення асинхронно
             await collection.UpdateOneAsync(filter, update);
 
 

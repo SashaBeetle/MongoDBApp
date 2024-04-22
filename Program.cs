@@ -1,22 +1,11 @@
-using MongoDB.Driver;
+using MongoDBApp.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+builder.Services.RegisterDatabaseDependencies(builder.Configuration);
+
 builder.Services.AddRazorPages();
 
-builder.Services.AddSingleton<IMongoClient>(serviceProvider =>
-{
-    var config = serviceProvider.GetRequiredService<IConfiguration>();
-    var connectionString = config.GetConnectionString("MongoDBConnection");
-    return new MongoClient(connectionString);
-});
-
-builder.Services.AddScoped<IMongoDatabase>(serviceProvider =>
-{
-    var client = serviceProvider.GetRequiredService<IMongoClient>();
-    return client.GetDatabase("MyDB");
-});
 
 var app = builder.Build();
 

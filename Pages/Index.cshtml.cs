@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using MongoDB.Driver;
-using MongoDBApp.Items;
+using MongoDBApp.Domain.Entities;
 
 namespace MongoDBApp.Pages
 {
@@ -21,7 +21,6 @@ namespace MongoDBApp.Pages
         public void OnGet()
         {
             
-            // Операції, які виконуються при завантаженні сторінки
         }
 
         public async Task<IActionResult> OnPost()
