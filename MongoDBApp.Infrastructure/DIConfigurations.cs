@@ -15,13 +15,13 @@ namespace MongoDBApp.Infrastructure
                 return new MongoClient(connectionString);
             });
 
-
             services.AddScoped<IMongoDatabase>(serviceProvider =>
             {
                 var client = serviceProvider.GetRequiredService<IMongoClient>();
                 return client.GetDatabase("MyDB");
             });
         }
+
 
     }
 }
